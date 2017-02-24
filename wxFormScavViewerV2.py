@@ -18,7 +18,7 @@ import wx.grid
 class MainFrame ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"ScanViewer", pos = wx.DefaultPosition, size = wx.Size( 848,729 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"ScanViewer", pos = wx.DefaultPosition, size = wx.Size( 649,757 ), style = wx.DEFAULT_FRAME_STYLE|wx.SIMPLE_BORDER )
 		
 		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
 		
@@ -32,22 +32,22 @@ class MainFrame ( wx.Frame ):
 		bSizer3.SetMinSize( wx.Size( 10,10 ) ) 
 		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"label" ), wx.VERTICAL )
 		
-		self.m_textCtrl5 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer2.Add( self.m_textCtrl5, 0, wx.ALL, 5 )
+		self.m_textCtrl5 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+		sbSizer2.Add( self.m_textCtrl5, 0, 0, 5 )
 		
-		self.m_textCtrl4 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer2.Add( self.m_textCtrl4, 0, wx.ALL, 5 )
+		self.m_textCtrl4 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+		sbSizer2.Add( self.m_textCtrl4, 0, 0, 5 )
 		
 		
 		bSizer3.Add( sbSizer2, 1, 0, 5 )
 		
 		sbSizer3 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"label" ), wx.VERTICAL )
 		
-		self.m_textCtrl3 = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer3.Add( self.m_textCtrl3, 0, wx.ALL, 5 )
+		self.m_textCtrl3 = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+		sbSizer3.Add( self.m_textCtrl3, 0, 0, 5 )
 		
-		self.m_textCtrl2 = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer3.Add( self.m_textCtrl2, 0, wx.ALL, 5 )
+		self.m_textCtrl2 = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+		sbSizer3.Add( self.m_textCtrl2, 0, 0, 5 )
 		
 		
 		bSizer3.Add( sbSizer3, 1, wx.EXPAND, 5 )
@@ -55,7 +55,7 @@ class MainFrame ( wx.Frame ):
 		
 		gSizer1.Add( bSizer3, 1, wx.ALIGN_RIGHT, 5 )
 		
-		self.m_bitmap1 = wx.StaticBitmap( self, wx.ID_ANY, wx.Bitmap( u"Schem.bmp", wx.BITMAP_TYPE_ANY ), wx.Point( 0,0 ), wx.Size( 200,100 ), 0 )
+		self.m_bitmap1 = wx.StaticBitmap( self, wx.ID_ANY, wx.Bitmap( u"Schem.bmp", wx.BITMAP_TYPE_ANY ), wx.Point( 0,0 ), wx.Size( 20,100 ), 0 )
 		gSizer1.Add( self.m_bitmap1, 0, wx.ALL|wx.EXPAND, 5 )
 		
 		bSizer31 = wx.BoxSizer( wx.VERTICAL )
@@ -63,22 +63,22 @@ class MainFrame ( wx.Frame ):
 		bSizer31.SetMinSize( wx.Size( 10,10 ) ) 
 		sbSizer21 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"label" ), wx.VERTICAL )
 		
-		self.m_textCtrl51 = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer21.Add( self.m_textCtrl51, 0, wx.ALL, 5 )
+		self.m_textCtrl51 = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+		sbSizer21.Add( self.m_textCtrl51, 0, 0, 5 )
 		
-		self.m_textCtrl41 = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer21.Add( self.m_textCtrl41, 0, wx.ALL, 5 )
+		self.m_textCtrl41 = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+		sbSizer21.Add( self.m_textCtrl41, 0, 0, 5 )
 		
 		
 		bSizer31.Add( sbSizer21, 1, 0, 5 )
 		
 		sbSizer31 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"label" ), wx.VERTICAL )
 		
-		self.m_textCtrl31 = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer31.Add( self.m_textCtrl31, 0, wx.ALL, 5 )
+		self.m_textCtrl31 = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+		sbSizer31.Add( self.m_textCtrl31, 0, 0, 5 )
 		
-		self.m_textCtrl21 = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer31.Add( self.m_textCtrl21, 0, wx.ALL, 5 )
+		self.m_textCtrl21 = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 50,-1 ), 0 )
+		sbSizer31.Add( self.m_textCtrl21, 0, 0, 5 )
 		
 		
 		bSizer31.Add( sbSizer31, 1, wx.EXPAND, 5 )
@@ -119,11 +119,11 @@ class MainFrame ( wx.Frame ):
 		# Columns
 		self.m_gridValue.SetColSize( 0, 72 )
 		self.m_gridValue.SetColSize( 1, 52 )
-		self.m_gridValue.SetColSize( 2, 106 )
-		self.m_gridValue.SetColSize( 3, 80 )
-		self.m_gridValue.SetColSize( 4, 80 )
-		self.m_gridValue.SetColSize( 5, 80 )
-		self.m_gridValue.SetColSize( 6, 80 )
+		self.m_gridValue.SetColSize( 2, 90 )
+		self.m_gridValue.SetColSize( 3, 60 )
+		self.m_gridValue.SetColSize( 4, 60 )
+		self.m_gridValue.SetColSize( 5, 60 )
+		self.m_gridValue.SetColSize( 6, 60 )
 		self.m_gridValue.EnableDragColMove( False )
 		self.m_gridValue.EnableDragColSize( True )
 		self.m_gridValue.SetColLabelSize( 30 )
@@ -149,7 +149,7 @@ class MainFrame ( wx.Frame ):
 		
 		# Cell Defaults
 		self.m_gridValue.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer8.Add( self.m_gridValue, 0, wx.ALL|wx.EXPAND, 5 )
+		bSizer8.Add( self.m_gridValue, 0, wx.ALL, 5 )
 		
 		self.m_gridComment = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 		
@@ -171,6 +171,11 @@ class MainFrame ( wx.Frame ):
 		self.m_gridComment.SetColLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
 		
 		# Rows
+		self.m_gridComment.SetRowSize( 0, 30 )
+		self.m_gridComment.SetRowSize( 1, 30 )
+		self.m_gridComment.SetRowSize( 2, 30 )
+		self.m_gridComment.SetRowSize( 3, 30 )
+		self.m_gridComment.AutoSizeRows()
 		self.m_gridComment.EnableDragRowSize( True )
 		self.m_gridComment.SetRowLabelSize( 0 )
 		self.m_gridComment.SetRowLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
@@ -179,10 +184,10 @@ class MainFrame ( wx.Frame ):
 		
 		# Cell Defaults
 		self.m_gridComment.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer8.Add( self.m_gridComment, 0, wx.ALL|wx.EXPAND, 5 )
+		bSizer8.Add( self.m_gridComment, 0, wx.ALL, 5 )
 		
 		self.m_textLOG = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.Point( 0,0 ), wx.Size( -1,-1 ), wx.TE_MULTILINE )
-		self.m_textLOG.SetMinSize( wx.Size( -1,150 ) )
+		self.m_textLOG.SetMinSize( wx.Size( -1,100 ) )
 		
 		bSizer8.Add( self.m_textLOG, 0, wx.EXPAND|wx.ALL, 5 )
 		
