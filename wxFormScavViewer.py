@@ -11,6 +11,11 @@ import wx
 import wx.xrc
 import wx.grid
 
+GET1 = 1000
+GET2 = 1001
+GET3 = 1002
+GET4 = 1003
+
 ###########################################################################
 ## Class MainFrame
 ###########################################################################
@@ -18,94 +23,123 @@ import wx.grid
 class MainFrame ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"ScanViewer", pos = wx.DefaultPosition, size = wx.Size( 848,729 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"ScanViewer", pos = wx.DefaultPosition, size = wx.Size( 800,900 ), style = wx.DEFAULT_FRAME_STYLE|wx.SIMPLE_BORDER )
 		
-		self.SetSizeHintsSz( wx.DefaultSize, wx.DefaultSize )
+		self.SetSizeHintsSz( wx.Size( 800,900 ), wx.Size( 800,900 ) )
+		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 		
 		bSizer8 = wx.BoxSizer( wx.VERTICAL )
 		
-		gSizer1 = wx.GridSizer( 0, 4, 0, 0 )
+		bSizer5 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		gSizer1.SetMinSize( wx.Size( 1,1 ) ) 
-		bSizer3 = wx.BoxSizer( wx.VERTICAL )
+		gSizer2 = wx.GridSizer( 2, 0, 0, 0 )
 		
-		bSizer3.SetMinSize( wx.Size( 10,10 ) ) 
-		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"label" ), wx.VERTICAL )
+		sbSizer3 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"GUN#1" ), wx.VERTICAL )
 		
-		self.m_textCtrl5 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer2.Add( self.m_textCtrl5, 0, wx.ALL, 5 )
+		self.m_textCtrlGUN1X = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, u"X=+0.0003", wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
+		self.m_textCtrlGUN1X.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
 		
-		self.m_textCtrl4 = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer2.Add( self.m_textCtrl4, 0, wx.ALL, 5 )
+		sbSizer3.Add( self.m_textCtrlGUN1X, 0, 0, 5 )
 		
+		self.m_textCtrlGUN1Y = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
+		self.m_textCtrlGUN1Y.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
 		
-		bSizer3.Add( sbSizer2, 1, 0, 5 )
-		
-		sbSizer3 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"label" ), wx.VERTICAL )
-		
-		self.m_textCtrl3 = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer3.Add( self.m_textCtrl3, 0, wx.ALL, 5 )
-		
-		self.m_textCtrl2 = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer3.Add( self.m_textCtrl2, 0, wx.ALL, 5 )
+		sbSizer3.Add( self.m_textCtrlGUN1Y, 0, 0, 5 )
 		
 		
-		bSizer3.Add( sbSizer3, 1, wx.EXPAND, 5 )
+		gSizer2.Add( sbSizer3, 1, wx.ALIGN_TOP, 5 )
+		
+		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"GUN#2" ), wx.VERTICAL )
+		
+		self.m_textCtrlGUN2X = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
+		self.m_textCtrlGUN2X.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
+		
+		sbSizer2.Add( self.m_textCtrlGUN2X, 0, 0, 5 )
+		
+		self.m_textCtrlGUN2Y = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
+		self.m_textCtrlGUN2Y.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
+		
+		sbSizer2.Add( self.m_textCtrlGUN2Y, 0, 0, 5 )
 		
 		
-		gSizer1.Add( bSizer3, 1, wx.ALIGN_RIGHT, 5 )
-		
-		self.m_bitmap1 = wx.StaticBitmap( self, wx.ID_ANY, wx.Bitmap( u"Schem.bmp", wx.BITMAP_TYPE_ANY ), wx.Point( 0,0 ), wx.Size( 200,100 ), 0 )
-		gSizer1.Add( self.m_bitmap1, 0, wx.ALL|wx.EXPAND, 5 )
-		
-		bSizer31 = wx.BoxSizer( wx.VERTICAL )
-		
-		bSizer31.SetMinSize( wx.Size( 10,10 ) ) 
-		sbSizer21 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"label" ), wx.VERTICAL )
-		
-		self.m_textCtrl51 = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer21.Add( self.m_textCtrl51, 0, wx.ALL, 5 )
-		
-		self.m_textCtrl41 = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer21.Add( self.m_textCtrl41, 0, wx.ALL, 5 )
+		gSizer2.Add( sbSizer2, 1, wx.ALIGN_BOTTOM, 5 )
 		
 		
-		bSizer31.Add( sbSizer21, 1, 0, 5 )
+		bSizer5.Add( gSizer2, 0, wx.EXPAND, 5 )
 		
-		sbSizer31 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"label" ), wx.VERTICAL )
+		self.m_bitmap1 = wx.StaticBitmap( self, wx.ID_ANY, wx.Bitmap( u"Schem.bmp", wx.BITMAP_TYPE_ANY ), wx.Point( -1,-1 ), wx.Size( 530,435 ), 0 )
+		self.m_bitmap1.SetMinSize( wx.Size( 510,435 ) )
+		self.m_bitmap1.SetMaxSize( wx.Size( 520,435 ) )
 		
-		self.m_textCtrl31 = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer31.Add( self.m_textCtrl31, 0, wx.ALL, 5 )
+		bSizer5.Add( self.m_bitmap1, 0, wx.EXPAND, 5 )
 		
-		self.m_textCtrl21 = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
-		sbSizer31.Add( self.m_textCtrl21, 0, wx.ALL, 5 )
+		gSizer21 = wx.GridSizer( 2, 0, 0, 0 )
+		
+		sbSizer31 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"GUN#3" ), wx.VERTICAL )
+		
+		self.m_textCtrlGUN3X = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
+		self.m_textCtrlGUN3X.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
+		
+		sbSizer31.Add( self.m_textCtrlGUN3X, 0, 0, 5 )
+		
+		self.m_textCtrlGUN3Y = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
+		self.m_textCtrlGUN3Y.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
+		
+		sbSizer31.Add( self.m_textCtrlGUN3Y, 0, 0, 5 )
 		
 		
-		bSizer31.Add( sbSizer31, 1, wx.EXPAND, 5 )
+		gSizer21.Add( sbSizer31, 1, wx.ALIGN_TOP, 5 )
+		
+		sbSizer21 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"GUN#4" ), wx.VERTICAL )
+		
+		self.m_textCtrlGUN4X = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
+		self.m_textCtrlGUN4X.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
+		
+		sbSizer21.Add( self.m_textCtrlGUN4X, 0, 0, 5 )
+		
+		self.m_textCtrlGUN4Y = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
+		self.m_textCtrlGUN4Y.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
+		
+		sbSizer21.Add( self.m_textCtrlGUN4Y, 0, 0, 5 )
 		
 		
-		gSizer1.Add( bSizer31, 1, 0, 5 )
+		gSizer21.Add( sbSizer21, 1, wx.ALIGN_BOTTOM, 5 )
+		
+		
+		bSizer5.Add( gSizer21, 0, wx.EXPAND, 5 )
 		
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 		
 		bSizer1.SetMinSize( wx.Size( 1,1 ) ) 
-		self.m_buttonGET1 = wx.Button( self, wx.ID_ANY, u"GET1", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer1.Add( self.m_buttonGET1, 0, wx.ALL, 5 )
+		self.m_buttonGET1 = wx.Button( self, GET1, u"GET1", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonGET1.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
+		self.m_buttonGET1.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
 		
-		self.m_buttonGET2 = wx.Button( self, wx.ID_ANY, u"GET2", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer1.Add( self.m_buttonGET2, 0, wx.ALL, 5 )
+		bSizer1.Add( self.m_buttonGET1, 1, wx.ALL, 5 )
 		
-		self.m_buttonGET3 = wx.Button( self, wx.ID_ANY, u"GET3", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer1.Add( self.m_buttonGET3, 0, wx.ALL, 5 )
+		self.m_buttonGET2 = wx.Button( self, GET2, u"GET2", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonGET2.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
+		self.m_buttonGET2.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
 		
-		self.m_buttonGET4 = wx.Button( self, wx.ID_ANY, u"GET4", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer1.Add( self.m_buttonGET4, 0, wx.ALL, 5 )
+		bSizer1.Add( self.m_buttonGET2, 1, wx.ALL, 5 )
+		
+		self.m_buttonGET3 = wx.Button( self, GET3, u"GET3", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonGET3.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
+		self.m_buttonGET3.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
+		
+		bSizer1.Add( self.m_buttonGET3, 1, wx.ALL, 5 )
+		
+		self.m_buttonGET4 = wx.Button( self, GET4, u"GET4", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonGET4.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
+		self.m_buttonGET4.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
+		
+		bSizer1.Add( self.m_buttonGET4, 1, wx.ALL, 5 )
 		
 		
-		gSizer1.Add( bSizer1, 1, wx.ALIGN_CENTER_VERTICAL, 5 )
+		bSizer5.Add( bSizer1, 0, wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
 		
 		
-		bSizer8.Add( gSizer1, 1, 0, 5 )
+		bSizer8.Add( bSizer5, 1, wx.EXPAND, 5 )
 		
 		self.m_gridValue = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 		
@@ -117,16 +151,16 @@ class MainFrame ( wx.Frame ):
 		self.m_gridValue.SetMargins( 0, 0 )
 		
 		# Columns
-		self.m_gridValue.SetColSize( 0, 72 )
-		self.m_gridValue.SetColSize( 1, 52 )
-		self.m_gridValue.SetColSize( 2, 106 )
+		self.m_gridValue.SetColSize( 0, 90 )
+		self.m_gridValue.SetColSize( 1, 70 )
+		self.m_gridValue.SetColSize( 2, 150 )
 		self.m_gridValue.SetColSize( 3, 80 )
 		self.m_gridValue.SetColSize( 4, 80 )
 		self.m_gridValue.SetColSize( 5, 80 )
 		self.m_gridValue.SetColSize( 6, 80 )
 		self.m_gridValue.EnableDragColMove( False )
 		self.m_gridValue.EnableDragColSize( True )
-		self.m_gridValue.SetColLabelSize( 30 )
+		self.m_gridValue.SetColLabelSize( 35 )
 		self.m_gridValue.SetColLabelValue( 0, u"GUN" )
 		self.m_gridValue.SetColLabelValue( 1, u"X, Y" )
 		self.m_gridValue.SetColLabelValue( 2, u"Present value" )
@@ -145,44 +179,76 @@ class MainFrame ( wx.Frame ):
 		self.m_gridValue.SetRowLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
 		
 		# Label Appearance
-		self.m_gridValue.SetLabelFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), 70, 90, 92, False, wx.EmptyString ) )
+		self.m_gridValue.SetLabelFont( wx.Font( 15, 70, 90, 92, False, wx.EmptyString ) )
 		
 		# Cell Defaults
 		self.m_gridValue.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer8.Add( self.m_gridValue, 0, wx.ALL|wx.EXPAND, 5 )
+		self.m_gridValue.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), 70, 90, 90, False, wx.EmptyString ) )
 		
-		self.m_gridComment = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer8.Add( self.m_gridValue, 0, wx.ALL, 5 )
 		
-		# Grid
-		self.m_gridComment.CreateGrid( 4, 2 )
-		self.m_gridComment.EnableEditing( True )
-		self.m_gridComment.EnableGridLines( True )
-		self.m_gridComment.EnableDragGridSize( False )
-		self.m_gridComment.SetMargins( 0, 0 )
+		bSizer51 = wx.BoxSizer( wx.HORIZONTAL )
 		
-		# Columns
-		self.m_gridComment.SetColSize( 0, 50 )
-		self.m_gridComment.SetColSize( 1, 550 )
-		self.m_gridComment.EnableDragColMove( False )
-		self.m_gridComment.EnableDragColSize( True )
-		self.m_gridComment.SetColLabelSize( 30 )
-		self.m_gridComment.SetColLabelValue( 0, u"SET" )
-		self.m_gridComment.SetColLabelValue( 1, u"Comment" )
-		self.m_gridComment.SetColLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
+		bSizer6 = wx.BoxSizer( wx.VERTICAL )
 		
-		# Rows
-		self.m_gridComment.EnableDragRowSize( True )
-		self.m_gridComment.SetRowLabelSize( 0 )
-		self.m_gridComment.SetRowLabelAlignment( wx.ALIGN_CENTRE, wx.ALIGN_CENTRE )
+		self.m_staticText6 = wx.StaticText( self, wx.ID_ANY, u"Comment 1", wx.Point( -1,-1 ), wx.Size( -1,-1 ), wx.ALIGN_CENTRE )
+		self.m_staticText6.Wrap( -1 )
+		self.m_staticText6.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		
-		# Label Appearance
+		bSizer6.Add( self.m_staticText6, 1, wx.EXPAND|wx.TOP, 5 )
 		
-		# Cell Defaults
-		self.m_gridComment.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
-		bSizer8.Add( self.m_gridComment, 0, wx.ALL|wx.EXPAND, 5 )
+		self.m_staticText7 = wx.StaticText( self, wx.ID_ANY, u"Comment 2", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
+		self.m_staticText7.Wrap( -1 )
+		self.m_staticText7.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
+		
+		bSizer6.Add( self.m_staticText7, 1, wx.EXPAND|wx.TOP, 5 )
+		
+		self.m_staticText8 = wx.StaticText( self, wx.ID_ANY, u"Comment 3", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
+		self.m_staticText8.Wrap( -1 )
+		self.m_staticText8.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
+		
+		bSizer6.Add( self.m_staticText8, 1, wx.EXPAND|wx.TOP, 5 )
+		
+		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"Comment 4", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
+		self.m_staticText9.Wrap( -1 )
+		self.m_staticText9.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
+		
+		bSizer6.Add( self.m_staticText9, 1, wx.EXPAND|wx.TOP, 5 )
+		
+		
+		bSizer51.Add( bSizer6, 0, wx.ALL|wx.EXPAND, 5 )
+		
+		bSizer7 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.m_textCtrlComm1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
+		self.m_textCtrlComm1.SetMaxLength( 256 ) 
+		bSizer7.Add( self.m_textCtrlComm1, 0, wx.BOTTOM|wx.EXPAND, 5 )
+		
+		self.m_textCtrlComm2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
+		self.m_textCtrlComm2.SetMaxLength( 256 ) 
+		bSizer7.Add( self.m_textCtrlComm2, 0, wx.BOTTOM|wx.EXPAND, 5 )
+		
+		self.m_textCtrlComm3 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
+		self.m_textCtrlComm3.SetMaxLength( 256 ) 
+		bSizer7.Add( self.m_textCtrlComm3, 0, wx.BOTTOM|wx.EXPAND, 5 )
+		
+		self.m_textCtrlComm4 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
+		self.m_textCtrlComm4.SetMaxLength( 256 ) 
+		bSizer7.Add( self.m_textCtrlComm4, 0, wx.EXPAND, 5 )
+		
+		
+		bSizer51.Add( bSizer7, 1, wx.ALL|wx.EXPAND, 5 )
+		
+		self.m_buttonSaveComment = wx.Button( self, wx.ID_ANY, u"Save\nComment", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonSaveComment.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
+		
+		bSizer51.Add( self.m_buttonSaveComment, 0, wx.ALL|wx.EXPAND, 5 )
+		
+		
+		bSizer8.Add( bSizer51, 0, wx.EXPAND, 5 )
 		
 		self.m_textLOG = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.Point( 0,0 ), wx.Size( -1,-1 ), wx.TE_MULTILINE )
-		self.m_textLOG.SetMinSize( wx.Size( -1,150 ) )
+		self.m_textLOG.SetMinSize( wx.Size( -1,50 ) )
 		
 		bSizer8.Add( self.m_textLOG, 0, wx.EXPAND|wx.ALL, 5 )
 		
@@ -191,8 +257,30 @@ class MainFrame ( wx.Frame ):
 		self.Layout()
 		
 		self.Centre( wx.BOTH )
+		
+		# Connect Events
+		self.m_buttonGET1.Bind( wx.EVT_BUTTON, self.onGetClick )
+		self.m_buttonGET2.Bind( wx.EVT_BUTTON, self.onGetClick )
+		self.m_buttonGET3.Bind( wx.EVT_BUTTON, self.onGetClick )
+		self.m_buttonGET4.Bind( wx.EVT_BUTTON, self.onGetClick )
+		self.m_gridValue.Bind( wx.grid.EVT_GRID_LABEL_LEFT_CLICK, self.onColumClick )
+		self.m_buttonSaveComment.Bind( wx.EVT_BUTTON, self.onSaveCommentClick )
 	
 	def __del__( self ):
 		pass
+	
+	
+	# Virtual event handlers, overide them in your derived class
+	def onGetClick( self, event ):
+		event.Skip()
+	
+	
+	
+	
+	def onColumClick( self, event ):
+		event.Skip()
+	
+	def onSaveCommentClick( self, event ):
+		event.Skip()
 	
 
