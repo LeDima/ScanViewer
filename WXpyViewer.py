@@ -2,10 +2,8 @@
 """
 Created on Fri Feb 10 09:43:39 2017
 
-@author: Dima
+@author: LeDima
 """
-
-
 import wx
 #import wx.xrc
 #import wx.grid
