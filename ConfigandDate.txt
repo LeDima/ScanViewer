@@ -1,14 +1,5 @@
 {
-  "SerialSpeed": 9600,
-  "ICPCONAdres": "01",
-  "Comment": [
-    "Comment 1hthtrhr",
-    "Comment 2",
-    "Comment 3",
-    "Comment 4"
-  ],
-  "PeriodDate": 500,
-  "SerialName": "COM1",
+  "SerialTimeout": 0.1,
   "Precision": [
     0.5,
     0.5,
@@ -19,7 +10,16 @@
     0.5,
     0.5
   ],
-  "SetValue": 2,
+  "Comment": [
+    "Comment 1hthtrhr",
+    "Comment 2ghdghd",
+    "Comment 3",
+    "Comment 4"
+  ],
+  "SerialSpeed": 9600,
+  "PeriodDate": 500,
+  "SetValue": 3,
+  "SerialName": "COM1",
   "BeamDate": [
     [
       -0.013,
@@ -29,6 +29,16 @@
       -0.014,
       -0.014,
       -0.014,
+      -0.013
+    ],
+    [
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013,
       -0.013
     ],
     [
@@ -42,25 +52,15 @@
       0.001
     ],
     [
-      0.001,
-      0.001,
-      0.001,
-      0.001,
-      0.001,
-      0.001,
-      0.001,
-      0.001
-    ],
-    [
-      0.001,
-      0.001,
-      0.001,
-      0.001,
-      0.001,
-      0.001,
-      0.001,
-      0.001
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013,
+      -0.013
     ]
   ],
-  "SerialTimeout": 0.1
+  "ICPCONAdres": "01"
 }

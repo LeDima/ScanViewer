@@ -8,7 +8,7 @@
 ###########################################################################
 
 import wx
-import wx.xrc
+#import wx.xrc
 import wx.grid
 
 GET1 = 1000
@@ -23,18 +23,25 @@ GET4 = 1003
 class MainFrame ( wx.Frame ):
 	
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"ScanViewer", pos = wx.DefaultPosition, size = wx.Size( 800,900 ), style = wx.DEFAULT_FRAME_STYLE|wx.SIMPLE_BORDER )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"ScanViewer", pos = wx.DefaultPosition, size = wx.Size( 830,840 ), style = wx.DEFAULT_FRAME_STYLE|wx.SIMPLE_BORDER )
 		
-		self.SetSizeHintsSz( wx.Size( 800,900 ), wx.Size( 800,900 ) )
+		self.SetSizeHintsSz( wx.Size( 830,480 ), wx.Size( -1,-1 ) )
 		self.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_ACTIVECAPTION ) )
 		
 		bSizer8 = wx.BoxSizer( wx.VERTICAL )
+		
+		self.m_scrolledWindow1 = wx.ScrolledWindow( self, wx.ID_ANY, wx.DefaultPosition, wx.Size( 830,920 ), wx.HSCROLL|wx.VSCROLL )
+		self.m_scrolledWindow1.SetScrollRate( 5, 5 )
+		self.m_scrolledWindow1.SetBackgroundColour( wx.Colour( 0, 128, 255 ) )
+		self.m_scrolledWindow1.SetMinSize( wx.Size( 830,920 ) )
+		
+		bSizer71 = wx.BoxSizer( wx.VERTICAL )
 		
 		bSizer5 = wx.BoxSizer( wx.HORIZONTAL )
 		
 		gSizer2 = wx.GridSizer( 2, 0, 0, 0 )
 		
-		sbSizer3 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"GUN#1" ), wx.VERTICAL )
+		sbSizer3 = wx.StaticBoxSizer( wx.StaticBox( self.m_scrolledWindow1, wx.ID_ANY, u"GUN#1" ), wx.VERTICAL )
 		
 		self.m_textCtrlGUN1X = wx.TextCtrl( sbSizer3.GetStaticBox(), wx.ID_ANY, u"X=+0.0003", wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
 		self.m_textCtrlGUN1X.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
@@ -49,7 +56,7 @@ class MainFrame ( wx.Frame ):
 		
 		gSizer2.Add( sbSizer3, 1, wx.ALIGN_TOP, 5 )
 		
-		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"GUN#2" ), wx.VERTICAL )
+		sbSizer2 = wx.StaticBoxSizer( wx.StaticBox( self.m_scrolledWindow1, wx.ID_ANY, u"GUN#2" ), wx.VERTICAL )
 		
 		self.m_textCtrlGUN2X = wx.TextCtrl( sbSizer2.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
 		self.m_textCtrlGUN2X.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
@@ -65,17 +72,17 @@ class MainFrame ( wx.Frame ):
 		gSizer2.Add( sbSizer2, 1, wx.ALIGN_BOTTOM, 5 )
 		
 		
-		bSizer5.Add( gSizer2, 0, wx.EXPAND, 5 )
+		bSizer5.Add( gSizer2, 0, wx.EXPAND|wx.LEFT, 5 )
 		
-		self.m_bitmap1 = wx.StaticBitmap( self, wx.ID_ANY, wx.Bitmap( u"Schem.bmp", wx.BITMAP_TYPE_ANY ), wx.Point( -1,-1 ), wx.Size( 530,435 ), 0 )
-		self.m_bitmap1.SetMinSize( wx.Size( 510,435 ) )
-		self.m_bitmap1.SetMaxSize( wx.Size( 520,435 ) )
+		self.m_bitmap1 = wx.StaticBitmap( self.m_scrolledWindow1, wx.ID_ANY, wx.Bitmap( u"Schem.bmp", wx.BITMAP_TYPE_ANY ), wx.Point( -1,-1 ), wx.Size( 530,420 ), 0 )
+		self.m_bitmap1.SetMinSize( wx.Size( 510,420 ) )
+		self.m_bitmap1.SetMaxSize( wx.Size( 520,420 ) )
 		
 		bSizer5.Add( self.m_bitmap1, 0, wx.EXPAND, 5 )
 		
 		gSizer21 = wx.GridSizer( 2, 0, 0, 0 )
 		
-		sbSizer31 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"GUN#3" ), wx.VERTICAL )
+		sbSizer31 = wx.StaticBoxSizer( wx.StaticBox( self.m_scrolledWindow1, wx.ID_ANY, u"GUN#3" ), wx.VERTICAL )
 		
 		self.m_textCtrlGUN3X = wx.TextCtrl( sbSizer31.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
 		self.m_textCtrlGUN3X.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
@@ -90,7 +97,7 @@ class MainFrame ( wx.Frame ):
 		
 		gSizer21.Add( sbSizer31, 1, wx.ALIGN_TOP, 5 )
 		
-		sbSizer21 = wx.StaticBoxSizer( wx.StaticBox( self, wx.ID_ANY, u"GUN#4" ), wx.VERTICAL )
+		sbSizer21 = wx.StaticBoxSizer( wx.StaticBox( self.m_scrolledWindow1, wx.ID_ANY, u"GUN#4" ), wx.VERTICAL )
 		
 		self.m_textCtrlGUN4X = wx.TextCtrl( sbSizer21.GetStaticBox(), wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( 80,-1 ), wx.TE_READONLY )
 		self.m_textCtrlGUN4X.SetFont( wx.Font( 10, 70, 90, 92, False, wx.EmptyString ) )
@@ -111,37 +118,39 @@ class MainFrame ( wx.Frame ):
 		bSizer1 = wx.BoxSizer( wx.VERTICAL )
 		
 		bSizer1.SetMinSize( wx.Size( 1,1 ) ) 
-		self.m_buttonGET1 = wx.Button( self, GET1, u"GET1", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonGET1 = wx.Button( self.m_scrolledWindow1, GET1, u"GET1", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_buttonGET1.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		self.m_buttonGET1.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
 		
-		bSizer1.Add( self.m_buttonGET1, 1, wx.ALL, 5 )
+		bSizer1.Add( self.m_buttonGET1, 1, wx.ALL|wx.EXPAND, 5 )
 		
-		self.m_buttonGET2 = wx.Button( self, GET2, u"GET2", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonGET2 = wx.Button( self.m_scrolledWindow1, GET2, u"GET2", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_buttonGET2.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		self.m_buttonGET2.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
 		
-		bSizer1.Add( self.m_buttonGET2, 1, wx.ALL, 5 )
+		bSizer1.Add( self.m_buttonGET2, 1, wx.ALL|wx.EXPAND, 5 )
 		
-		self.m_buttonGET3 = wx.Button( self, GET3, u"GET3", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonGET3 = wx.Button( self.m_scrolledWindow1, GET3, u"GET3", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_buttonGET3.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		self.m_buttonGET3.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
 		
-		bSizer1.Add( self.m_buttonGET3, 1, wx.ALL, 5 )
+		bSizer1.Add( self.m_buttonGET3, 1, wx.ALL|wx.EXPAND, 5 )
 		
-		self.m_buttonGET4 = wx.Button( self, GET4, u"GET4", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonGET4 = wx.Button( self.m_scrolledWindow1, GET4, u"GET4", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_buttonGET4.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		self.m_buttonGET4.SetBackgroundColour( wx.SystemSettings.GetColour( wx.SYS_COLOUR_BTNFACE ) )
 		
-		bSizer1.Add( self.m_buttonGET4, 1, wx.ALL, 5 )
+		bSizer1.Add( self.m_buttonGET4, 1, wx.ALL|wx.EXPAND, 5 )
 		
 		
-		bSizer5.Add( bSizer1, 0, wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
+		bSizer5.Add( bSizer1, 1, wx.ALIGN_CENTER_VERTICAL|wx.EXPAND, 5 )
 		
 		
-		bSizer8.Add( bSizer5, 1, wx.EXPAND, 5 )
+		bSizer71.Add( bSizer5, 0, wx.EXPAND, 5 )
 		
-		self.m_gridValue = wx.grid.Grid( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
+		bSizer81 = wx.BoxSizer( wx.HORIZONTAL )
+		
+		self.m_gridValue = wx.grid.Grid( self.m_scrolledWindow1, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, 0 )
 		
 		# Grid
 		self.m_gridValue.CreateGrid( 8, 7 )
@@ -185,31 +194,39 @@ class MainFrame ( wx.Frame ):
 		self.m_gridValue.SetDefaultCellAlignment( wx.ALIGN_LEFT, wx.ALIGN_TOP )
 		self.m_gridValue.SetFont( wx.Font( wx.NORMAL_FONT.GetPointSize(), 70, 90, 90, False, wx.EmptyString ) )
 		
-		bSizer8.Add( self.m_gridValue, 0, wx.ALL, 5 )
+		bSizer81.Add( self.m_gridValue, 0, wx.ALL, 5 )
+		
+		self.m_textLOG = wx.TextCtrl( self.m_scrolledWindow1, wx.ID_ANY, wx.EmptyString, wx.Point( 0,0 ), wx.Size( -1,-1 ), wx.TE_MULTILINE|wx.TE_NO_VSCROLL|wx.TE_READONLY )
+		self.m_textLOG.SetMinSize( wx.Size( -1,186 ) )
+		
+		bSizer81.Add( self.m_textLOG, 1, wx.ALL, 5 )
+		
+		
+		bSizer71.Add( bSizer81, 0, wx.EXPAND, 5 )
 		
 		bSizer51 = wx.BoxSizer( wx.HORIZONTAL )
 		
 		bSizer6 = wx.BoxSizer( wx.VERTICAL )
 		
-		self.m_staticText6 = wx.StaticText( self, wx.ID_ANY, u"Comment 1", wx.Point( -1,-1 ), wx.Size( -1,-1 ), wx.ALIGN_CENTRE )
+		self.m_staticText6 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"Comment 1", wx.Point( -1,-1 ), wx.Size( -1,-1 ), wx.ALIGN_CENTRE )
 		self.m_staticText6.Wrap( -1 )
 		self.m_staticText6.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		
 		bSizer6.Add( self.m_staticText6, 1, wx.EXPAND|wx.TOP, 5 )
 		
-		self.m_staticText7 = wx.StaticText( self, wx.ID_ANY, u"Comment 2", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
+		self.m_staticText7 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"Comment 2", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
 		self.m_staticText7.Wrap( -1 )
 		self.m_staticText7.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		
 		bSizer6.Add( self.m_staticText7, 1, wx.EXPAND|wx.TOP, 5 )
 		
-		self.m_staticText8 = wx.StaticText( self, wx.ID_ANY, u"Comment 3", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
+		self.m_staticText8 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"Comment 3", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
 		self.m_staticText8.Wrap( -1 )
 		self.m_staticText8.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		
 		bSizer6.Add( self.m_staticText8, 1, wx.EXPAND|wx.TOP, 5 )
 		
-		self.m_staticText9 = wx.StaticText( self, wx.ID_ANY, u"Comment 4", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
+		self.m_staticText9 = wx.StaticText( self.m_scrolledWindow1, wx.ID_ANY, u"Comment 4", wx.DefaultPosition, wx.DefaultSize, wx.ALIGN_CENTRE )
 		self.m_staticText9.Wrap( -1 )
 		self.m_staticText9.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		
@@ -220,37 +237,37 @@ class MainFrame ( wx.Frame ):
 		
 		bSizer7 = wx.BoxSizer( wx.VERTICAL )
 		
-		self.m_textCtrlComm1 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
+		self.m_textCtrlComm1 = wx.TextCtrl( self.m_scrolledWindow1, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
 		self.m_textCtrlComm1.SetMaxLength( 256 ) 
 		bSizer7.Add( self.m_textCtrlComm1, 0, wx.BOTTOM|wx.EXPAND, 5 )
 		
-		self.m_textCtrlComm2 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
+		self.m_textCtrlComm2 = wx.TextCtrl( self.m_scrolledWindow1, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
 		self.m_textCtrlComm2.SetMaxLength( 256 ) 
 		bSizer7.Add( self.m_textCtrlComm2, 0, wx.BOTTOM|wx.EXPAND, 5 )
 		
-		self.m_textCtrlComm3 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
+		self.m_textCtrlComm3 = wx.TextCtrl( self.m_scrolledWindow1, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
 		self.m_textCtrlComm3.SetMaxLength( 256 ) 
 		bSizer7.Add( self.m_textCtrlComm3, 0, wx.BOTTOM|wx.EXPAND, 5 )
 		
-		self.m_textCtrlComm4 = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
+		self.m_textCtrlComm4 = wx.TextCtrl( self.m_scrolledWindow1, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size( -1,40 ), wx.TE_MULTILINE )
 		self.m_textCtrlComm4.SetMaxLength( 256 ) 
 		bSizer7.Add( self.m_textCtrlComm4, 0, wx.EXPAND, 5 )
 		
 		
 		bSizer51.Add( bSizer7, 1, wx.ALL|wx.EXPAND, 5 )
 		
-		self.m_buttonSaveComment = wx.Button( self, wx.ID_ANY, u"Save\nComment", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.m_buttonSaveComment = wx.Button( self.m_scrolledWindow1, wx.ID_ANY, u"Save\nComment", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.m_buttonSaveComment.SetFont( wx.Font( 15, 70, 90, 90, False, wx.EmptyString ) )
 		
 		bSizer51.Add( self.m_buttonSaveComment, 0, wx.ALL|wx.EXPAND, 5 )
 		
 		
-		bSizer8.Add( bSizer51, 0, wx.EXPAND, 5 )
+		bSizer71.Add( bSizer51, 0, wx.EXPAND, 5 )
 		
-		self.m_textLOG = wx.TextCtrl( self, wx.ID_ANY, wx.EmptyString, wx.Point( 0,0 ), wx.Size( -1,-1 ), wx.TE_MULTILINE )
-		self.m_textLOG.SetMinSize( wx.Size( -1,50 ) )
 		
-		bSizer8.Add( self.m_textLOG, 0, wx.EXPAND|wx.ALL, 5 )
+		self.m_scrolledWindow1.SetSizer( bSizer71 )
+		self.m_scrolledWindow1.Layout()
+		bSizer8.Add( self.m_scrolledWindow1, 1, wx.EXPAND, 5 )
 		
 		
 		self.SetSizer( bSizer8 )

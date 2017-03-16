@@ -1,0 +1,26 @@
+missing module named resource - imported by posix, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named posix - imported by os, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named _posixsubprocess - imported by subprocess, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named 'org.python' - imported by pickle, D:\PyProg\ScanViewer\WXpyViewer.py, xml.sax
+missing module named readline - imported by cmd, code, pdb, D:\PyProg\ScanViewer\WXpyViewer.py
+excluded module named _frozen_importlib - imported by importlib, importlib.abc, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named _frozen_importlib_external - imported by importlib._bootstrap, importlib, importlib.abc, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named _winreg - imported by platform, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named _scproxy - imported by urllib.request
+missing module named java - imported by platform, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named 'java.lang' - imported by platform, D:\PyProg\ScanViewer\WXpyViewer.py, xml.sax._exceptions
+missing module named vms_lib - imported by platform, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named termios - imported by tty, serial.serialposix, D:\PyProg\ScanViewer\WXpyViewer.py, getpass
+missing module named grp - imported by tarfile, shutil, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named pwd - imported by posixpath, tarfile, shutil, http.server, webbrowser, D:\PyProg\ScanViewer\WXpyViewer.py, netrc, getpass
+missing module named ce - imported by os, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named org - imported by copy, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named _dummy_threading - imported by dummy_threading, D:\PyProg\ScanViewer\WXpyViewer.py
+missing module named FCNTL - imported by serial.serialposix
+missing module named TERMIOS - imported by serial.serialposix
+missing module named fcntl - imported by serial.serialposix
+missing module named 'System.IO' - imported by serial.serialcli
+missing module named System - imported by serial.serialcli
+missing module named clr - imported by serial.serialcli
+missing module named Carbon - imported by wx.lib.colourutils
+missing module named StringIO - imported by six

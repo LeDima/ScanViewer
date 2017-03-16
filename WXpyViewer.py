@@ -24,7 +24,7 @@ class MainClass(MainFrame):
     def __init__( self, parent ):
         MainFrame.__init__( self, parent )
         
-        redir=RedirectText(self.m_textLOG)   # Redirect print() to m_textLOG 
+        redir=RedirectText(self.m_textLOG)      # Redirect print() to m_textLOG 
         sys.stdout=redir
         
         self.ValueDate=[self.m_textCtrlGUN1X,
@@ -81,11 +81,13 @@ class MainClass(MainFrame):
         
         #self.m_buttonGET1.SetBackgroundColour
         
-        self.ser = self.open_serial_port(self.MainDict['SerialName'])
-        
-        self.timer = wx.Timer(self, -1)
-        self.timer.Start(self.MainDict['PeriodDate'])   # update clock digits every second ('PeriodDate' ms)
-        self.Bind(wx.EVT_TIMER, self.OnTimer)
+        try:
+            self.ser = self.open_serial_port(self.MainDict['SerialName'])
+            self.timer = wx.Timer(self, -1)
+            self.timer.Start(self.MainDict['PeriodDate'])   # update clock digits every second ('PeriodDate' ms)
+            self.Bind(wx.EVT_TIMER, self.OnTimer)
+        except: 
+            print('System error')
         
         self.m_textCtrlComm1.SetValue(self.MainDict['Comment'][0])
         self.m_textCtrlComm2.SetValue(self.MainDict['Comment'][1])
@@ -102,16 +104,22 @@ class MainClass(MainFrame):
         self.SetValuePre=self.MainDict['SetValue']
         for i in range(8):
                 self.m_gridValue.SetCellBackgroundColour(i,self.SetValuePre+2,wx.LIGHT_GREY)
+                
         
+        
+        self.Bind(wx.EVT_SIZING, self.ResizeEvents)
+        
+    def ResizeEvents(self,event):
+        self.Refresh()
+  
     def OnTimer(self, event):
- 
+        
         self.data_to_send = self.write_serial_port(self.ser, "#"+self.MainDict['ICPCONAdres'])
         self.dataFloat =[float(self.data_to_send[i:i+7]) for i in range(56) if i%7==0]
         
         for i in range(8):
             self.m_gridValue.SetCellValue(i,2,format(self.dataFloat[i], '+.03f'))
        
-        #print(self.dataFloat)
         for i in range(8):
             DiffValues = self.dataFloat[i]-self.MainDict['BeamDate'][self.MainDict['SetValue']-1][i]
             #if dataFloat[i]<=self.MainDict['ICPCONAdres']
@@ -190,18 +198,19 @@ class MainClass(MainFrame):
     def open_serial_port(self,serial_name):
         try:
             s = serial.Serial(serial_name, self.MainDict['SerialSpeed'])
-            s.timeout = self.MainDict['SerialTimeout']; 
+            s.timeout = self.MainDict['SerialTimeout'];
+            print('Serial port',serial_name,'connected.')
         except serial.SerialException:
-            sys.stderr.write("Error opening the port {}".format(serial_name))
-            sys.exit(1)
-        print('Serial port connected')
+            print('Error opening the port ',serial_name)
+            #sys.stderr.write("Error opening the port {}".format(serial_name))
+            #sys.exit(1)
         return s
 
     def write_serial_port(self,s, cmd="#01"):
         data = b""
         CRC = format(sum([ord(ss) for ss in cmd]),'02X')
         cmd1 =  cmd.encode("iso-8859-15") + CRC.encode("iso-8859-15") + b"\r"
-        #print(cmd1)
+
         i=0
         while b"\r" not in data:
             s.write(cmd1)
@@ -209,16 +218,18 @@ class MainClass(MainFrame):
             s.flushInput()
             i+=1
             if i>=2:
-                print("Error connected device")
+                while "Error connected device" not in self.m_textLOG.GetValue() :
+                    print("Error connected device",cmd + ".")
                 break
             else:
-                print(data)
+                pass
+                #print(data)
         
         if data[-3:-1].decode("iso-8859-15") == format(sum([ord(ss) for ss in data[:-3].decode("iso-8859-15")]),'02X')[-2:]:
             data=data[1:-3].decode("iso-8859-15")
         else:
             if i<2:
-                print("Error CRC ")
+                print("Error CRC. ")
             data='+0.0000+0.0000+0.0000+0.0000+0.0000+0.0000+0.0000+0.0000'
                       
         return data
@@ -227,8 +238,5 @@ if __name__ == "__main__":
     app = wx.App()
     wnd = MainClass(None)
     wnd.Show(True)
-    try:
-        app.MainLoop()
-    except Exception:
-        print("Error opening the port {}")
-        exit()
+    app.MainLoop()
+    
